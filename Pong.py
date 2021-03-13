@@ -9,7 +9,8 @@ WINDOW_TITLE = "Pong by Loupio"
 
 class Pong(ac.Window):
     def __init__(self):
-        super(Pong, self).__init__(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT, WINDOW_TITLE, resizable=True)
+        super(Pong, self).__init__(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT, WINDOW_TITLE)
+        self.set_fullscreen()
 
         self.show_menu()
 
