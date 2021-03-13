@@ -55,7 +55,7 @@ class Game(ac.View):
                     self.winner = "Player 2"
                     self.end_timer = time()
                 self.start()
-        else:
+        elif self.mode == "end":
             if time() - self.end_timer >= 5:
                 self.window.show_menu()
 
@@ -71,6 +71,10 @@ class Game(ac.View):
                          anchor_x="right", anchor_y="bottom", color=(255, 255, 255), font_size=width * 2 / 100)
         else:
             self.ball.draw()
+
+        if self.mode == "pause":
+            ac.draw_text(text="PAUSE", start_x=width // 2, start_y=height // 2, color=(255, 255, 255),
+                         anchor_x="center", anchor_y="center", font_size=width * 1 / 20)
         self.players.draw()
 
         ac.draw_text(text=f"{self.player_1.score}", start_x=width // 2 - 20, start_y=height - 20,
@@ -84,8 +88,14 @@ class Game(ac.View):
                      anchor_x="center", anchor_y="top", font_size=width * 5 / 100)
 
     def on_key_press(self, symbol: int, modifiers: int):
-        for player in self.players:
-            player.key_press(symbol)
+        if symbol == ac.key.ESCAPE:
+            if self.mode == "pause":
+                self.mode = "game"
+            else:
+                self.mode = "pause"
+        else:
+            for player in self.players:
+                player.key_press(symbol)
 
     def on_key_release(self, _symbol: int, _modifiers: int):
         for player in self.players:
