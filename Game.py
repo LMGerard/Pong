@@ -81,10 +81,10 @@ class Game(ac.View):
 
         ac.draw_text(text=f"{self.player_1.score}", start_x=width // 2 - 20, start_y=height - 20,
                      color=(255, 0, 0),
-                     anchor_x="right", anchor_y="top", font_size=width * 2 / 100)
+                     anchor_x="right", anchor_y="top", font_size=width * 3 / 100)
         ac.draw_text(text=f"{self.player_2.score}", start_x=width // 2 + 20, start_y=height - 20,
                      color=(255, 0, 0),
-                     anchor_x="left", anchor_y="top", font_size=width * 2 / 100)
+                     anchor_x="left", anchor_y="top", font_size=width * 3 / 100)
         ac.draw_text(text=f"|", start_x=width // 2, start_y=height - 20,
                      color=(255, 0, 0),
                      anchor_x="center", anchor_y="top", font_size=width * 5 / 100)
