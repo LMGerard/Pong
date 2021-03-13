@@ -6,8 +6,9 @@ from time import time
 class Game(ac.View):
     def __init__(self, window: ac.Window):
         super(Game, self).__init__(window)
+        self.music_player = ac.play_sound(window.musics["music"], volume=0.1)
 
-        self.mode = "game"  # game | end
+        self.mode = "game"  # game | end | pause
         self.winner = None
         self.end_timer = None
 
@@ -57,6 +58,7 @@ class Game(ac.View):
                 self.start()
         elif self.mode == "end":
             if time() - self.end_timer >= 5:
+                ac.stop_sound(self.music_player)
                 self.window.show_menu()
 
     def on_draw(self):
@@ -164,3 +166,4 @@ class Ball(ac.Sprite):
         if len(a) > 0:
             self.change_y += (self.center_y - a[0].center_y) * 0.1
             self.change_x *= -1
+            ac.play_sound(self.window.musics["ping_pong"])

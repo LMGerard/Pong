@@ -8,6 +8,12 @@ WINDOW_TITLE = "Pong by Loupio"
 
 
 class Pong(ac.Window):
+    musics = {
+        "select": ac.load_sound("assets/menu/button_select.mp3"),
+        "music": ac.load_sound("assets/game/thefatrat-windfall.mp3"),
+        "ping_pong": ac.load_sound("assets/game/ping_pong.mp3")
+    }
+
     def __init__(self):
         super(Pong, self).__init__(BASE_WINDOW_WIDTH, BASE_WINDOW_HEIGHT, WINDOW_TITLE)
         self.set_fullscreen()
