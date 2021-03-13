@@ -1,5 +1,6 @@
 import arcade as ac
 import arcade.gui as gui
+import os
 
 
 class Menu(ac.View):
@@ -14,11 +15,15 @@ class Menu(ac.View):
         width, height = self.window.get_size()
         self.ui_elements.append(Button(
             "assets/menu/play_unselected.png", hover_texture="assets/menu/play_selected.png",
-            center_x=self.window.width // 2, center_y=height * 2 // 3, click_callback=self.window.start_game))
+            center_x=self.window.width // 2, center_y=height * 2 // 3, click_callback=self.window.start_game, scale=0.4))
 
         self.ui_elements.append(Button(
             "assets/menu/controls.png",
-            center_x=self.window.width // 2, center_y=height // 4))
+            center_x=self.window.width // 2, center_y=height // 4, scale=0.6))
+
+        self.ui_elements.append(Button(
+            "assets/menu/exit_unselected.png", hover_texture="assets/menu/exit_selected.png",
+            center_x=self.window.width - 50, center_y=height - 50, scale=0.1, click_callback=self.window.close))
 
     def on_update(self, delta_time: float):
         pass
@@ -40,8 +45,8 @@ class Menu(ac.View):
 
 class Button(ac.Sprite):
     def __init__(self, normal_texture: str, hover_texture=None, center_x=0, center_y=0,
-                 click_callback: callable = None, text: str = ""):
-        super(Button, self).__init__(filename=normal_texture, scale=0.6, center_x=center_x, center_y=center_y)
+                 click_callback: callable = None, text: str = "", scale: float = 1):
+        super(Button, self).__init__(filename=normal_texture, scale=scale, center_x=center_x, center_y=center_y)
 
         if hover_texture is not None:
             self.hover_texture = ac.load_texture(hover_texture)
