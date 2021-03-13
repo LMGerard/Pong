@@ -15,15 +15,25 @@ class Menu(ac.View):
         width, height = self.window.get_size()
         self.ui_elements.append(Button(
             "assets/menu/play_unselected.png", hover_texture="assets/menu/play_selected.png",
-            center_x=self.window.width // 2, center_y=height * 2 // 3, click_callback=self.window.start_game, scale=0.4))
+            center_x=width // 3, center_y=height // 2, click_callback=self.window.start_game, scale=0.3))
+
+        self.ui_elements.append(Button(
+            "assets/menu/title.png",
+            center_x=width // 3, center_y=height * 5 // 7))
 
         self.ui_elements.append(Button(
             "assets/menu/controls.png",
-            center_x=self.window.width // 2, center_y=height // 4, scale=0.6))
+            center_x=width // 3, center_y=height // 5, scale=0.5))
+
+        self.ui_elements.append(Button("assets/menu/ball.png", center_x=width, center_y=0, scale=1))
+        self.ui_elements.append(Button("assets/menu/ball.png", center_x=width * 4 // 5,
+                                       center_y=height * 3 // 4, scale=0.15))
+        self.ui_elements.append(Button("assets/menu/ball.png", center_x=width * 5 // 8,
+                                       center_y=height // 2, scale=0.1))
 
         self.ui_elements.append(Button(
             "assets/menu/exit_unselected.png", hover_texture="assets/menu/exit_selected.png",
-            center_x=self.window.width - 50, center_y=height - 50, scale=0.1, click_callback=self.window.close))
+            center_x=width - 50, center_y=height - 50, scale=0.15, click_callback=self.window.close))
 
     def on_update(self, delta_time: float):
         pass

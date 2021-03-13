@@ -108,9 +108,9 @@ class Player(ac.Sprite):
     def setup(self, player_number):
         self.angle = 90
         if player_number == 1:
-            self.center_x = 20
+            self.center_x = self.window.width // 20
         else:
-            self.center_x = self.window.width - 20
+            self.center_x = self.window.width * 19 // 20
         self.controls = Player.setup_control_keys[player_number - 1]
 
     def update(self):
@@ -137,7 +137,7 @@ class Ball(ac.Sprite):
         self.game = game
         self.window = game.window
         super(Ball, self).__init__(filename="assets/game/ball.png", scale=0.03)
-        self.speed = 3
+        self.speed = 5
         self.players, self.player_1, self.player_2 = None, None, None
 
     def setup(self, players: ac.SpriteList):
