@@ -32,13 +32,14 @@ class Menu(ac.View):
         self.ui_elements.append(Button(self.window, "assets/menu/ball.png", center_x=width * 5 // 8,
                                        center_y=height // 2, scale=0.1))
 
+        credits = Button(self.window, "assets/menu/credits.png", scale=0.3)
+        credits.position = width - credits.width / 2, credits.height / 2
+        self.ui_elements.append(credits)
+
         self.ui_elements.append(Button(self.window,
                                        "assets/menu/exit_unselected.png", hover_texture="assets/menu/exit_selected.png",
                                        center_x=width - 50, center_y=height - 50, scale=0.15,
                                        click_callback=self.window.close))
-
-    def on_update(self, delta_time: float):
-        pass
 
     def on_draw(self):
         ac.start_render()
